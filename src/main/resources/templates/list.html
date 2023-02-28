@@ -13,18 +13,22 @@
 
         <table class="centeredTable">
             <tr>
-                <th:block th:each="column : ${columns}">
+                <th:block th:each="column : ${columns}"> <!--for each column in columns loop through and display as a table header (all, employer, location, position type, skill)-->
                     <th th:text = "${column.value}"></th>
                 </th:block>
             </tr>
             <tr>
                 <!-- TODO #2: Complete the View Jobs By Category Table. -->
 
-                <td></td> <!-- Feel free to remove or modify this element if necessary. -->
+                <td>
+                    <li>
+                        <a href="/list/jobs?column=all">View All</a>
+                    </li>
+                </td> <!-- Feel free to remove or modify this element if necessary. -->
 
-                <td th:each="category : ${tableChoices}">
+                <td th:each="category : ${tableChoices}"> <!-- for each category in table choices (all, employer, location, position type, skill)-->
                     <ul>
-                        <li th:each="item : ${category.value}">
+                        <li th:each="item : ${category.value}"> <!-- Get each category value and also generate a hyperlink-->
                             <a th:href="@{/list/jobs(column=${category.key},value=${item})}" th:text="${item}"></a>
                         </li>
                     </ul>
